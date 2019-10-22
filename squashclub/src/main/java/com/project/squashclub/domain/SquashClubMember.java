@@ -4,7 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Period;
+
 
 @Entity
 public class SquashClubMember {
@@ -15,8 +17,9 @@ public class SquashClubMember {
     private String firstName;
     private String lastName;
     private int rating;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private String gender;
+    private long age;
 
     public long getId() {
         return id;
@@ -50,11 +53,11 @@ public class SquashClubMember {
         this.rating = rating;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -66,5 +69,11 @@ public class SquashClubMember {
         this.gender = gender;
     }
 
+    public long getAge() {
+        return age;
+    }
 
+    public void calculateAge() {
+        this.age = Period.between(dateOfBirth, LocalDate.now()).getYears();
+    }
 }
