@@ -22,4 +22,6 @@ public class SquashClubMemberService {
     public void delete(Long id){
         squashClubMemberRepository.deleteById(id);
     }
+
+
 }

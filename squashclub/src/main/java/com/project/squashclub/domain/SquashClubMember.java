@@ -15,7 +15,7 @@ public class SquashClubMember {
     private String firstName;
     private String lastName;
     private int rating;
-    //private Date dateOfBirth;
+    private Date dateOfBirth;
     private String gender;
 
     public long getId() {
@@ -50,13 +50,13 @@ public class SquashClubMember {
         this.rating = rating;
     }
 
-   /* public Date getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
-    }*/
+    }
 
     public String getGender() {
         return gender;
