@@ -16,41 +16,25 @@ public class SquashClubMemberEndpoint {
         return squashClubMemberService.giveAllSquashClubMembers();
     }
 
-    @GetMapping("/test")
-    public SquashClubMember test(){
-        System.out.println("test gelukt!");
-        SquashClubMember s = new SquashClubMember();
-        s.setFirstName("henk");
-        s.setId(1);
-        s.setLastName("henkertsma");
-        s.setRating(5);
-        s.setGender("Apache");
-        return s;
-    }
-
     @PostMapping("/allsquashclubmembers")
     public SquashClubMember newSquashClubMember(@RequestBody SquashClubMember squashClubMember){
         SquashClubMember newnewSquashClubMember =squashClubMemberService.save(squashClubMember);
+        System.out.println("Member added");
         return newnewSquashClubMember;
     }
 
-    @DeleteMapping("/allsquashclubmembers/{id}")
+    @DeleteMapping("/allsquashclubmembers/{id}/delete")
     public void deleteSquashClubMember(@PathVariable("id") Long id){
-         squashClubMemberService.delete(id);
+        squashClubMemberService.delete(id);
+        System.out.println("Member deleted");
     }
 
-    @PutMapping("/allsquashclubmembers/{id}")
+    @PatchMapping("/allsquashclubmembers/{id}")
     public SquashClubMember updateSquashClubMember(@RequestBody SquashClubMember squashClubMember, @PathVariable Long id){
-        /*Optional<SquashClubMember> squashClubMemberOptional = squashClubMemberService.findById(id);
-
-        if (!squashClubMemberOptional.isPresent())
-            return SquashClubMember.notFound().build(); */
-
         squashClubMember.setId(id);
-
-        SquashClubMember newSquashClubMember = squashClubMemberService.save(squashClubMember);
-
-        return newSquashClubMember;
+        SquashClubMember updateSquashClubMember = squashClubMemberService.save(squashClubMember);
+        System.out.println("Member updated");
+        return updateSquashClubMember;
     }
 
 
