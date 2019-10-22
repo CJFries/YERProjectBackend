@@ -39,19 +39,19 @@ public class SquashClubMemberEndpoint {
          squashClubMemberService.delete(id);
     }
 
-    /*@PutMapping("/allsquashclubmembers/{id}")
-    public SquashClubMember updateSquashClubMember(@PathVariable Long id, @RequestBody SquashClubMember squashClubMember){
-        Optional<SquashClubMember> squashClubMemberOptional = squashClubMemberRepository.findById(id);
+    @PutMapping("/allsquashclubmembers/{id}")
+    public SquashClubMember updateSquashClubMember(@RequestBody SquashClubMember squashClubMember, @PathVariable Long id){
+        /*Optional<SquashClubMember> squashClubMemberOptional = squashClubMemberService.findById(id);
 
-        if (!studentOptional.isPresent())
-            return SquashClubMember.notFound().build();
+        if (!squashClubMemberOptional.isPresent())
+            return SquashClubMember.notFound().build(); */
 
         squashClubMember.setId(id);
 
-        squashClubMemberRepository.save(squashClubMember);
+        SquashClubMember newSquashClubMember = squashClubMemberService.save(squashClubMember);
 
-        return SquashClubMember.noContent().build();
+        return newSquashClubMember;
     }
 
-    }*/
+
 }
