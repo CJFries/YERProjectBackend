@@ -50,7 +50,11 @@ public class SquashClubMember {
         this.rating = rating;
     }
 
+<<<<<<< HEAD
    public Date getDateOfBirth() {
+=======
+    public Date getDateOfBirth() {
+>>>>>>> master
         return dateOfBirth;
     }
 
