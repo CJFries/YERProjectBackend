@@ -1,13 +1,14 @@
 package com.project.squashclub.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 
 
 @Entity
 @Table(name = "Squash_Club_id")
-public class SquashClubMember {
+public class SquashClubMember implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,7 +22,6 @@ public class SquashClubMember {
 
     @ManyToOne
     private SquashClub squashClub;
-
 
     public long getId() {
         return id;

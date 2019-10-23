@@ -12,11 +12,14 @@ public class SquashClubEndpoint {
     @Autowired
     SquashClubService squashClubService;
 
-
-
     @GetMapping("/allsquashclub")
-    public Iterable<SquashClub> giveSquashClubMembers(){
+    public Iterable<SquashClub> giveSquashClubMember(){
         return squashClubService.giveAllSquashClub();
+    }
+
+    @GetMapping("/zoek/{zoekterm}")
+    public void zoeken(@PathVariable String zoekterm){
+        System.out.println("gezocht op: " + zoekterm);
     }
 
     @PostMapping("/allsquashclub")

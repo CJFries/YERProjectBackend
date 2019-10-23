@@ -20,6 +20,7 @@ public class SquashClub {
 
     public void setNumberOfSquashMembers(int numberOfSquashClubMembers) {
         this.numberOfSquashClubMembers = numberOfSquashClubMembers;
+        //info ophalen uit database
     }
 
     public int getNumberOfReferees() {

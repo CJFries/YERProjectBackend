@@ -23,5 +23,4 @@ public class SquashClubService {
         squashClubRepository.deleteById(id);
     }
 
-
 }
