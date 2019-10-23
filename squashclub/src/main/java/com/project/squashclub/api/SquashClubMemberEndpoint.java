@@ -18,18 +18,19 @@ public class SquashClubMemberEndpoint {
 
     @PostMapping("/allsquashclubmembers")
     public SquashClubMember newSquashClubMember(@RequestBody SquashClubMember squashClubMember){
+        squashClubMember.calculateAge();
         SquashClubMember newnewSquashClubMember =squashClubMemberService.save(squashClubMember);
         System.out.println("Member added");
         return newnewSquashClubMember;
     }
 
-    @DeleteMapping("/allsquashclubmembers/{id}/delete")
+    @DeleteMapping("/squashclubmembers/{id}/delete")
     public void deleteSquashClubMember(@PathVariable("id") Long id){
         squashClubMemberService.delete(id);
         System.out.println("Member deleted");
     }
 
-    @PatchMapping("/allsquashclubmembers/{id}")
+    @PatchMapping("/squashclubmembers/{id}")
     public SquashClubMember updateSquashClubMember(@RequestBody SquashClubMember squashClubMember, @PathVariable Long id){
         squashClubMember.setId(id);
         SquashClubMember updateSquashClubMember = squashClubMemberService.save(squashClubMember);

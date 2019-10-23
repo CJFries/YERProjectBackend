@@ -1,15 +1,14 @@
 package com.project.squashclub.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 
 
 @Entity
-public class SquashClubMember {
+@Table(name = "Squash_Club_id")
+public class SquashClubMember implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,6 +19,9 @@ public class SquashClubMember {
     private LocalDate dateOfBirth;
     private String gender;
     private long age;
+
+    @ManyToOne
+    private SquashClub squashClub;
 
     public long getId() {
         return id;
@@ -69,11 +71,14 @@ public class SquashClubMember {
         this.gender = gender;
     }
 
+    public void calculateAge() {
+        this.age = Period.between(dateOfBirth, LocalDate.now()).getYears();
+    }
+
     public long getAge() {
         return age;
     }
 
-    public void calculateAge() {
-        this.age = Period.between(dateOfBirth, LocalDate.now()).getYears();
-    }
+
+
 }

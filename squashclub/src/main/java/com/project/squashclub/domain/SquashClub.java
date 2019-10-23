@@ -1,8 +1,14 @@
 package com.project.squashclub.domain;
 
+import javax.persistence.*;
+import java.util.Set;
 
+@Entity
 public class SquashClub {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    long id;
     private int numberOfSquashClubMembers;
     public final int numberOfCourts = 12;
     private int numberOfReferees;
@@ -12,8 +18,9 @@ public class SquashClub {
         return numberOfSquashClubMembers;
     }
 
-    public void setNumberOfSquashMembers(int numberOfSquashClubMembers){
+    public void setNumberOfSquashMembers(int numberOfSquashClubMembers) {
         this.numberOfSquashClubMembers = numberOfSquashClubMembers;
+        //info ophalen uit database
     }
 
     public int getNumberOfReferees() {
@@ -25,6 +32,6 @@ public class SquashClub {
     }
 
 
-
-
+    public void setId(Long id) {
+    }
 }
