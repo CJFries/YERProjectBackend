@@ -1,14 +1,14 @@
 package com.project.squashclub.domain;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
 
 
 @Entity
-@Table(name = "Squash_Club_id")
-public class SquashClubMember implements Serializable {
+@Table(name = "SquashClub_Member_Id")
+public class SquashClubMember{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,8 +20,8 @@ public class SquashClubMember implements Serializable {
     private String gender;
     private long age;
 
-    @ManyToOne
-    private SquashClub squashClub;
+    @ManyToMany
+    private List<Match> match;
 
     public long getId() {
         return id;
