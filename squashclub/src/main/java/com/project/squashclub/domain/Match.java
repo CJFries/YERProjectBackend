@@ -1,20 +1,24 @@
 package com.project.squashclub.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
-public class ClubTournament {
+@Table(name = "Match_Id")
+public class Match {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     long match_id;
     private int scorePlayer1;
     private int scorePlayer2;
+    private String player1;
+    private String player2;
     String result;
 
+
+    @ManyToMany(mappedBy = "match")
+    private List<SquashClubMember> squashClubMember;
 
     public long getMatch_id() {
         return match_id;
@@ -22,6 +26,22 @@ public class ClubTournament {
 
     public void setMatch_id(long match_id) {
         this.match_id = match_id;
+    }
+
+    public String getPlayer1() {
+        return player1;
+    }
+
+    public void setPlayer1(String player1) {
+        this.player1 = player1;
+    }
+
+    public String getPlayer2() {
+        return player2;
+    }
+
+    public void setPlayer2(String player2) {
+        this.player2 = player2;
     }
 
     public int getScorePlayer1() {
