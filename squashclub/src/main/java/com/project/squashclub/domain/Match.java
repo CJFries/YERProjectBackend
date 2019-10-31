@@ -12,8 +12,8 @@ public class Match {
     long match_id;
     private int scorePlayer1;
     private int scorePlayer2;
-    private String player1;
-    private String player2;
+    private long player1;
+    private long player2;
     String result;
 
 
@@ -28,19 +28,19 @@ public class Match {
         this.match_id = match_id;
     }
 
-    public String getPlayer1() {
+    public long getPlayer1() {
         return player1;
     }
 
-    public void setPlayer1(String player1) {
+    public void setPlayer1(long player1) {
         this.player1 = player1;
     }
 
-    public String getPlayer2() {
+    public long getPlayer2() {
         return player2;
     }
 
-    public void setPlayer2(String player2) {
+    public void setPlayer2(long player2) {
         this.player2 = player2;
     }
 
@@ -68,6 +68,12 @@ public class Match {
         this.result = "De score is: " + scorePlayer1 + "-" + scorePlayer2;
         System.out.println(this.result);
     }
+
+    /*public void newMatch(long squashMemberId, long squashMemberId, long courtId){
+        getPlayer1();
+        getPlayer2();
+        getCourtId();
+    }*/
 
     public String getResult() {
         return result;
