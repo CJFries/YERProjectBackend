@@ -12,7 +12,7 @@ public class SquashClubMember{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
+    long squashClubMemberId;
     private String firstName;
     private String lastName;
     private int rating;
@@ -23,12 +23,12 @@ public class SquashClubMember{
     @ManyToMany
     private List<Match> match;
 
-    public long getId() {
-        return id;
+    public long getSquashClubMemberId() {
+        return squashClubMemberId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setSquashClubMemberId(long squashClubMemberId) {
+        this.squashClubMemberId = squashClubMemberId;
     }
 
     public String getFirstName() {

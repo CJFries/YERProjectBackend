@@ -12,9 +12,10 @@ public class Match {
     long match_id;
     private int scorePlayer1;
     private int scorePlayer2;
-    private String player1;
-    private String player2;
+    private long idPlayer1;
+    private long idPlayer2;
     String result;
+    private int courtNumber;
 
 
     @ManyToMany(mappedBy = "match")
@@ -28,20 +29,28 @@ public class Match {
         this.match_id = match_id;
     }
 
-    public String getPlayer1() {
-        return player1;
+    public int getCourtNumber() {
+        return courtNumber;
     }
 
-    public void setPlayer1(String player1) {
-        this.player1 = player1;
+    public void setCourtNumber(int courtNumber) {
+        this.courtNumber = courtNumber;
     }
 
-    public String getPlayer2() {
-        return player2;
+    public long getIdPlayer1() {
+        return idPlayer1;
     }
 
-    public void setPlayer2(String player2) {
-        this.player2 = player2;
+    public void setIdPlayer1(long idPlayer1) {
+        this.idPlayer1 = idPlayer1;
+    }
+
+    public long getIdPlayer2() {
+        return idPlayer2;
+    }
+
+    public void setIdPlayer2(long idPlayer2) {
+        this.idPlayer2 = idPlayer2;
     }
 
     public int getScorePlayer1() {
@@ -68,6 +77,12 @@ public class Match {
         this.result = "De score is: " + scorePlayer1 + "-" + scorePlayer2;
         System.out.println(this.result);
     }
+
+    /*public void newMatch(long squashClubMemberId, long squashClubMemberId, long courtId){
+        getPlayer1();
+        getPlayer2();
+        getCourtId();
+    }*/
 
     public String getResult() {
         return result;

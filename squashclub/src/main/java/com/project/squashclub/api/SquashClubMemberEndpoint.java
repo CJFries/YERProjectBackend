@@ -24,19 +24,19 @@ public class SquashClubMemberEndpoint {
         return newnewSquashClubMember;
     }
 
-    @DeleteMapping("/squashclubmembers/{id}/delete")
-    public void deleteSquashClubMember(@PathVariable("id") Long id){
-        squashClubMemberService.delete(id);
+  /*  @DeleteMapping("/squashclubmembers/{squashClubMemberId}/delete")
+    public void deleteSquashClubMember(@PathVariable("id") Long squashClubMemberId){
+        squashClubMemberService.delete(squashClubMemberId);
         System.out.println("Member deleted");
     }
 
-    @PatchMapping("/squashclubmembers/{id}")
-    public SquashClubMember updateSquashClubMember(@RequestBody SquashClubMember squashClubMember, @PathVariable Long id){
-        squashClubMember.setId(id);
+    @PatchMapping("/squashclubmembers/{squashClubMemberId}")
+    public SquashClubMember updateSquashClubMember(@RequestBody SquashClubMember squashClubMember, @PathVariable Long squashClubMemberId){
+        squashClubMember.setSquashMemberId(squashClubMemberId);
         SquashClubMember updateSquashClubMember = squashClubMemberService.save(squashClubMember);
         System.out.println("Member updated");
         return updateSquashClubMember;
-    }
+    }*/
 
 
 }

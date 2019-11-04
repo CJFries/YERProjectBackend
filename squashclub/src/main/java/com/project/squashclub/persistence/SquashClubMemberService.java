@@ -19,8 +19,8 @@ public class SquashClubMemberService {
         return squashClubMemberRepository.save(squashClubMember);
     }
 
-    public void delete(Long id){
-        squashClubMemberRepository.deleteById(id);
+    public void delete(Long squashClubMemberId){
+        squashClubMemberRepository.deleteById(squashClubMemberId);
     }
 
 

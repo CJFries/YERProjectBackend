@@ -10,6 +10,8 @@ public class AdminService {
     @Autowired
     AdminRepository adminRepository;
 
-
+    public Iterable<Admin> giveAdmin(){
+        return adminRepository.findAll();
+    }
 
 }
