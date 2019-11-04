@@ -5,6 +5,7 @@ import com.project.squashclub.domain.Admin;
 import com.project.squashclub.domain.Match;
 import com.project.squashclub.domain.SquashClubMember;
 import com.project.squashclub.persistence.AdminService;
+import com.project.squashclub.persistence.MatchService;
 import com.project.squashclub.persistence.SquashClubMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,15 +19,18 @@ public class AdminEndpoint {
     @Autowired
     AdminService adminService;
 
-    @DeleteMapping("/squashclubmembers/{squashMemberId}/delete")
-    public void deleteSquashClubMember(@PathVariable("id") Long squashMemberId){
-        squashClubMemberService.delete(squashMemberId);
+    @Autowired
+    MatchService matchService;
+
+    @DeleteMapping("/squashclubmembers/{squashClubMemberId}/delete")
+    public void deleteSquashClubMember(@PathVariable("id") Long squashClubMemberId){
+        squashClubMemberService.delete(squashClubMemberId);
         System.out.println("Member deleted");
     }
 
-    @PatchMapping("/squashclubmembers/{squashMemberId}")
-    public SquashClubMember updateSquashClubMember(@RequestBody SquashClubMember squashClubMember, @PathVariable Long squashMemberId){
-        squashClubMember.setSquashMemberId(squashMemberId);
+    @PatchMapping("/squashclubmembers/{squashClubMemberId}")
+    public SquashClubMember updateSquashClubMember(@RequestBody SquashClubMember squashClubMember, @PathVariable Long squashClubMemberId){
+        squashClubMember.setSquashClubMemberId(squashClubMemberId);
         SquashClubMember updateSquashClubMember = squashClubMemberService.save(squashClubMember);
         System.out.println("Member updated");
         return updateSquashClubMember;
@@ -40,10 +44,17 @@ public class AdminEndpoint {
     }
 
     @PostMapping("/creatematch")
-    public Match match(@RequestBody Match match, @PathVariable Long match_id){
-        match.setMatch_id(match_id);
+    public Match match(@RequestBody Match match){
+        Match newMatch = matchService.save(match);
         System.out.println("match made!");
-        return match;
+        return newMatch;
     }
+
+    @GetMapping("/allmatches")
+    public Iterable<Match> giveAllMatches(){
+        System.out.println("matches retrieved");
+        return matchService.giveAllMatches();
+    }
+
 
 }
