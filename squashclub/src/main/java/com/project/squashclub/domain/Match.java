@@ -12,14 +12,16 @@ public class Match {
     long match_id;
     private int scorePlayer1;
     private int scorePlayer2;
-    private long idPlayer1;
-    private long idPlayer2;
+
     String result;
     private int courtNumber;
 
 
-    @ManyToMany(mappedBy = "match")
-    private List<SquashClubMember> squashClubMember;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private SquashClubMember player1;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private SquashClubMember player2;
 
     public long getMatch_id() {
         return match_id;
@@ -37,20 +39,20 @@ public class Match {
         this.courtNumber = courtNumber;
     }
 
-    public long getIdPlayer1() {
-        return idPlayer1;
+    public SquashClubMember getPlayer1() {
+        return player1;
     }
 
-    public void setIdPlayer1(long idPlayer1) {
-        this.idPlayer1 = idPlayer1;
+    public void setPlayer1(SquashClubMember player1) {
+        this.player1 = player1;
     }
 
-    public long getIdPlayer2() {
-        return idPlayer2;
+    public SquashClubMember getPlayer2() {
+        return player2;
     }
 
-    public void setIdPlayer2(long idPlayer2) {
-        this.idPlayer2 = idPlayer2;
+    public void setPlayer2(SquashClubMember player2) {
+        this.player2 = player2;
     }
 
     public int getScorePlayer1() {
@@ -70,7 +72,6 @@ public class Match {
     }
 
     public void matchScore(){
-
         getScorePlayer1();
         getScorePlayer2();
 
@@ -78,11 +79,6 @@ public class Match {
         System.out.println(this.result);
     }
 
-    /*public void newMatch(long squashClubMemberId, long squashClubMemberId, long courtId){
-        getPlayer1();
-        getPlayer2();
-        getCourtId();
-    }*/
 
     public String getResult() {
         return result;
