@@ -13,8 +13,8 @@ public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long admin_id;
-    String username;
-    String password;
+    private String username;
+    private String password;
 
   //  @OneToMany(fetch = FetchType.LAZY, mappedBy = "match")
   //  private List<Match> matchList;
@@ -26,7 +26,7 @@ public void login(){
 
         if(username.equals("admin") & password.equals("admin")){
             System.out.println("You're in!");
-        }else if (username.equals(username)) {
+        } else if (username.equals(username)) {
             System.out.println("Invalid Password!");
         } else if (password.equals(password)) {
             System.out.println("Invalid Username!");

@@ -22,8 +22,22 @@ public class AdminEndpoint {
     @Autowired
     MatchService matchService;
 
+    @PutMapping("/admin/scoreinput/{scoreplayer1}/{scoreplayer2}")
+    public Match newScoreInput(@RequestBody Match match, @PathVariable int scorePlayer1, @PathVariable int scorePlayer2){
+        System.out.println("score added");
+        match.matchScore();
+        Match updateMatch = matchService.save(match, scorePlayer1, scorePlayer2);
+        return updateMatch;
+    }
+
+    @GetMapping("/admin/scoreoutput")
+    public Iterable<Match> giveMatchScores(){
+        return matchService.giveAllMatchScores();
+    }
+
+
     @DeleteMapping("/squashclubmembers/{squashClubMemberId}/delete")
-    public void deleteSquashClubMember(@PathVariable("id") Long squashClubMemberId){
+    public void deleteSquashClubMember(@PathVariable Long squashClubMemberId){
         squashClubMemberService.delete(squashClubMemberId);
         System.out.println("Member deleted");
     }
@@ -43,14 +57,14 @@ public class AdminEndpoint {
         return admin;
     }
 
-    @PostMapping("/creatematch")
-    public Match match(@RequestBody Match match){
-        Match newMatch = matchService.save(match);
+    @PostMapping("/admin/creatematch/{player1}/{player2}")
+    public Match match(@RequestBody Match match, @PathVariable("player1") Long squashClubMemberId1, @PathVariable("player2") Long squashClubMemberId2){
         System.out.println("match made!");
+        Match newMatch = matchService.save(match, squashClubMemberId1, squashClubMemberId2);
         return newMatch;
     }
 
-    @GetMapping("/allmatches")
+    @GetMapping("/admin/allmatches")
     public Iterable<Match> giveAllMatches(){
         System.out.println("matches retrieved");
         return matchService.giveAllMatches();
