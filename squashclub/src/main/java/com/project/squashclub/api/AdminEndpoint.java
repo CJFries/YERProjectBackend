@@ -50,7 +50,7 @@ public class AdminEndpoint {
         return updateSquashClubMember;
     }
 
-    @PostMapping("/login") //inlog mogelijkheid voor website met combinatie van front en backend.
+    @GetMapping("/login") //inlog mogelijkheid voor website met combinatie van front en backend.
     public Admin admin(@RequestBody Admin admin){
         admin.login();
         System.out.println("Login attempt");

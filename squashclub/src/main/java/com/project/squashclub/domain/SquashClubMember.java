@@ -1,11 +1,9 @@
 package com.project.squashclub.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.List;
 
 
 @Entity
@@ -22,9 +20,7 @@ public class SquashClubMember{
     private String gender;
     private long age;
 
-/*    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Match match;*/
+
 
     public long getSquashClubMemberId() {
         return squashClubMemberId;
