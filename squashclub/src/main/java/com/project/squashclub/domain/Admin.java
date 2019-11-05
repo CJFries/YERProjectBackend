@@ -16,8 +16,6 @@ public class Admin {
     private String username;
     private String password;
 
-  //  @OneToMany(fetch = FetchType.LAZY, mappedBy = "match")
-  //  private List<Match> matchList;
 
 
 public void login(){
