@@ -23,6 +23,12 @@ public class SquashClubMemberService {
         squashClubMemberRepository.deleteById(squashClubMemberId);
     }
 
+    public void findSquashClubMemberByRating(int rating){
+        Iterable<SquashClubMember> sq = squashClubMemberRepository.findByRating(rating);
+        for(SquashClubMember scm : sq){
+            System.out.println("Found by rating");
+        }
+    }
 
 
 

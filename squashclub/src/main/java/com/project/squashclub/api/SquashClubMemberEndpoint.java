@@ -28,10 +28,15 @@ public class SquashClubMemberEndpoint {
     public void zoeken(@PathVariable String zoekterm){
         System.out.println("gezocht op: " + zoekterm);
     }
+    
+    @GetMapping("zoekenop/{rating}")
+    public void searchByRating(@PathVariable int rating){
+        squashClubMemberService.findSquashClubMemberByRating(rating);
+    }
 
-/*    @PatchMapping("/squashclubmembers/{squashClubMemberId}")
+   /*@PatchMapping("/squashclubmembers/{squashClubMemberId}")
     public SquashClubMember updateSquashClubMember(@RequestBody SquashClubMember squashClubMember, @PathVariable Long squashClubMemberId){
-        squashClubMember.setSquashMemberId(squashClubMemberId);
+        squashClubMember.setSquashClubMemberId(squashClubMemberId);
         SquashClubMember updateSquashClubMember = squashClubMemberService.save(squashClubMember);
         System.out.println("Member updated");
         return updateSquashClubMember;
