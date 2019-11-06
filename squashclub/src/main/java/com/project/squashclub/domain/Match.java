@@ -10,8 +10,8 @@ public class Match {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long match_id;
-    private int scorePlayer1;
-    private int scorePlayer2;
+    private int scorePlayer1 = 0;
+    private int scorePlayer2 = 0;
 
     String result;
     private int courtNumber;
@@ -71,12 +71,22 @@ public class Match {
         this.scorePlayer2 = scorePlayer2;
     }
 
+    public void setMatchScore(){
+        setScorePlayer1(scorePlayer1);
+        setScorePlayer2(scorePlayer2);
+
+    }
+
     public void matchScore(){
         getScorePlayer1();
         getScorePlayer2();
 
-        this.result = "De score is: " + scorePlayer1 + "-" + scorePlayer2;
-        System.out.println(this.result);
+        if(scorePlayer1 == 0 && scorePlayer2 == 0){
+            this.result = "De wedstrijd is nog niet gespeeld";
+        } else {
+            this.result = "De score is: " + scorePlayer1 + "-" + scorePlayer2;
+            System.out.println(this.result);
+        }
     }
 
 

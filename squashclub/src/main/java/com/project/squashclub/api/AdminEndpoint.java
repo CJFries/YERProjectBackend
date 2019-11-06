@@ -22,11 +22,10 @@ public class AdminEndpoint {
     @Autowired
     MatchService matchService;
 
-    @PutMapping("/admin/scoreinput/{scoreplayer1}/{scoreplayer2}")
-    public Match newScoreInput(@RequestBody Match match, @PathVariable int scorePlayer1, @PathVariable int scorePlayer2){
+    @PutMapping("/admin/scoreinput/{match_id}/{scorePlayer1}/{scorePlayer2}")
+    public Match newScoreInput(@PathVariable long match_id, @PathVariable int scorePlayer1, @PathVariable int scorePlayer2){
         System.out.println("score added");
-        match.matchScore();
-        Match updateMatch = matchService.save(match, scorePlayer1, scorePlayer2);
+        Match updateMatch = matchService.save(match_id, scorePlayer1, scorePlayer2);
         return updateMatch;
     }
 
@@ -57,10 +56,10 @@ public class AdminEndpoint {
         return admin;
     }
 
-    @PostMapping("/admin/creatematch/{player1}/{player2}")
-    public Match match(@RequestBody Match match, @PathVariable("player1") Long squashClubMemberId1, @PathVariable("player2") Long squashClubMemberId2){
+    @PostMapping("/admin/creatematch/{player1}/{player2}/{courtnumber}")
+    public Match match(@RequestBody Match match, @PathVariable("player1") Long squashClubMemberId1, @PathVariable("player2") Long squashClubMemberId2, @PathVariable("courtnumber") int courtNumber){
         System.out.println("match made!");
-        Match newMatch = matchService.save(match, squashClubMemberId1, squashClubMemberId2);
+        Match newMatch = matchService.save(match, squashClubMemberId1, squashClubMemberId2, courtNumber);
         return newMatch;
     }
 

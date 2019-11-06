@@ -8,4 +8,5 @@ import org.springframework.stereotype.Component;
 @Component
 public interface SquashClubMemberRepository extends CrudRepository<SquashClubMember, Long> {
 
+    Iterable<SquashClubMember> findByRating(int rating);
 }
